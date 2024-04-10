@@ -1,12 +1,15 @@
 package com.minhazul.springboot3.springboot3.rest;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class FunRestController {
+    @Value("${developer.name}")
+    private String developerName;
     @GetMapping("/")
     public String sayHello(){
-        return "HELLO WORLD";
+        return "HELLO " + developerName;
     }
 }
