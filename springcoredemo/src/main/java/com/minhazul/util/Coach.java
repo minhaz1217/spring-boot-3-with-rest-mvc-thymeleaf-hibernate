@@ -1,4 +1,4 @@
-package com.minhazul.springcoredemo;
+package com.minhazul.util;
 
 public interface Coach {
     String getDailyWorkout();
