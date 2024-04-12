@@ -9,16 +9,22 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.awt.color.ICC_ColorSpace;
+
 @Lazy
 @RestController
 public class DemoController {
     private Coach myCoach;
     private Coach _secondCoach;
+    private Coach _cricketCoach;
     @Autowired
-    public DemoController(Coach theCoach, Coach secondCoach){
+    public DemoController(Coach theCoach,
+                          Coach secondCoach,
+                          @Qualifier("cricket-coach") Coach cricketCoach){
         System.out.println("Constructor of: " + getClass().getSimpleName());
         myCoach = theCoach;
         _secondCoach = secondCoach;
+        _cricketCoach = cricketCoach;
     }
 
     @PostConstruct
@@ -39,5 +45,10 @@ public class DemoController {
     @GetMapping("/compare-coach")
     public String compareCoach(){
         return "myCoach == _secondCoach " + (myCoach == _secondCoach ? "True" : "False");
+    }
+
+    @GetMapping("/get-coaches")
+    public String getCoaches(){
+        return myCoach.getDailyWorkout() + " " + _cricketCoach.getDailyWorkout();
     }
 }
