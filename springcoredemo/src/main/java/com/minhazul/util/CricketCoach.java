@@ -1,4 +1,4 @@
-package com.minhazul.springcoredemo;
+package com.minhazul.util;
 
 import org.springframework.stereotype.Component;
 
