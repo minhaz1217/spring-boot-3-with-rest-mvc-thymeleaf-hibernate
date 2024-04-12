@@ -3,9 +3,7 @@ package com.minhazul.springcoredemo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(
-		scanBasePackages = { "com.minhazul.springcoredemo", "com.minhazul.util" }
-)
+@SpringBootApplication
 public class SpringcoredemoApplication {
 
 	public static void main(String[] args) {
