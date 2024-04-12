@@ -1,6 +1,8 @@
 package com.minhazul.springcoredemo.rest;
 
 import com.minhazul.springcoredemo.common.Coach;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
@@ -18,6 +20,17 @@ public class DemoController {
         myCoach = theCoach;
         _secondCoach = secondCoach;
     }
+
+    @PostConstruct
+    public void postConstructor(){
+        System.out.println("This is after the constructor");
+    }
+
+    @PreDestroy
+    public void preDestroy(){
+        System.out.println("This is before destroy");
+    }
+
     @GetMapping("/dailyworkout")
     public String getDailyWorkout(){
         return myCoach.getDailyWorkout();
