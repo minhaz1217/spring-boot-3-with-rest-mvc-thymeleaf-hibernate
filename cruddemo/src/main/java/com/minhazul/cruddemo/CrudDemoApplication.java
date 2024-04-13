@@ -20,7 +20,8 @@ public class CrudDemoApplication {
 		return runner ->{
 //			readStudent(studentDAO);
 //			queryForStudents(studentDAO);
-			queryForStudentsLastName(studentDAO, "Hayat");
+//			queryForStudentsLastName(studentDAO, "Hayat");
+			updateStudent(studentDAO);
 		};
 	}
 
@@ -57,5 +58,18 @@ public class CrudDemoApplication {
 			System.out.println(student);
 		}
 	}
+
+	private void updateStudent(StudentDAO studentDAO){
+		Student std = studentDAO.findById(1);
+		std.setLastName("Wobbles");
+		studentDAO.update(std);
+
+		List<Student> studentList = studentDAO.findByLastName("Wobbles");
+		for (Student student : studentList) {
+			System.out.println(student);
+		}
+	}
+
+
 
 }
