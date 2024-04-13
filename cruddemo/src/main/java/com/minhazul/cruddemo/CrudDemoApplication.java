@@ -21,7 +21,9 @@ public class CrudDemoApplication {
 //			readStudent(studentDAO);
 //			queryForStudents(studentDAO);
 //			queryForStudentsLastName(studentDAO, "Hayat");
-			updateStudent(studentDAO);
+//			updateStudent(studentDAO);
+//			deleteStudent(studentDAO);
+			deleteAllStudents(studentDAO);
 		};
 	}
 
@@ -68,6 +70,15 @@ public class CrudDemoApplication {
 		for (Student student : studentList) {
 			System.out.println(student);
 		}
+	}
+
+	private void deleteStudent(StudentDAO studentDAO){
+		studentDAO.delete(2);
+	}
+	private void deleteAllStudents(StudentDAO studentDAO){
+		int deleted = studentDAO.deleteAll();
+		System.out.println("Deleted " + deleted);
+
 	}
 
 
